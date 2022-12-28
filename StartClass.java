@@ -8,7 +8,7 @@ public class StartClass {
             int firstNumb = in.nextInt();
             int secondNumb = in.nextInt();
             int result = StartClass.sum(firstNumb, secondNumb);
-            System.out.println(result);
+            System.out.println("result: " + result);
         }
         public static Integer sum(int firstNumb, int secondNumb)
         {
