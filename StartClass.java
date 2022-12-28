@@ -15,7 +15,7 @@ public class StartClass {
         while(true){
             if(input.hasNextInt()){
                 range = input.nextInt();
-                if(0>=range || range >= 0)
+                if(0>=range || range > 0)
                     break;
                 else
                     continue;
