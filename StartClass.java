@@ -6,8 +6,8 @@ public class StartClass {
             System.out.println("Please, enter numbers");
             Scanner in = new Scanner(System.in);
             int numb = in.nextInt();
-            int reSult = StartClass.faktorial(numb);
-            System.out.println("result: " + reSult);
+            int result = StartClass.faktorial(numb);
+            System.out.println("result: " + result);
         }
         public static Integer faktorial(int numb)
         {
