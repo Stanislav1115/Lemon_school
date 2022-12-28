@@ -6,8 +6,8 @@ public class StartClass {
             System.out.println("Please, enter numbers");
             Scanner in = new Scanner(System.in);
             int numb = in.nextInt();
-            int result = StartClass.sum(numb);
-            System.out.println("result: " + result);
+            int reSult = StartClass.sum(numb);
+            System.out.println("result: " + reSult);
         }
         public static Integer sum(int numb)
         {
