@@ -5,13 +5,20 @@ public class StartClass {
         {
             System.out.println("Please, enter numbers");
             Scanner in = new Scanner(System.in);
-            int firstNumb = in.nextInt();
-            int secondNumb = in.nextInt();
-            int reSult = StartClass.sum(firstNumb, secondNumb);
+            int numb = in.nextInt();
+            int reSult = StartClass.sum(numb);
             System.out.println("result: " + reSult);
         }
-        public static Integer sum(int firstNumb, int secondNumb)
+        public static Integer sum(int numb)
         {
-              return firstNumb + secondNumb;
+              int result = 0;
+              for(int i = 0; i <= numb; i++)
+              {
+                  if(i % 3 == 0 || i % 5 == 0)
+                  {
+                      result += i;
+                  }
+              }
+              return result;
         }
 }
