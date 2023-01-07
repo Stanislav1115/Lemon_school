@@ -33,10 +33,11 @@ public class StartClass {
                 range = input.nextInt();
                 if(0<=range && range <= 24)
                     break;
-                else
+                else {
                     System.out.println("Exeption!!! Only 24 hours in a day!");
-                System.out.println("Enter an your hours: ");
+                    System.out.println("Enter an your hours: ");
                     continue;
+                }
             }
             input.nextLine();  //Comsume the garbage value
         }
