@@ -3,9 +3,28 @@ import java.util.Scanner;
 public class StartClass {
         public static void main(String[] args)
         {
+            System.out.println("How many values you want check?: ");
             int numb = check_value();
-            boolean result = StartClass.isEven(numb);
-            System.out.println("result: " + result);
+            if(numb < 0){
+                numb *= -1;
+            }else if(numb == 0){
+                System.out.println("Goodby!");
+                System.exit(0);
+            }
+
+            int[] values;
+            boolean[] result;
+            values = new int[numb];
+            result = new boolean[numb];
+            for(int i = 0; i < values.length; i++)
+            {
+                values[i] = check_value();
+                result[i] = StartClass.isEven(values[i]);
+            }
+            for(int i = 0; i < result.length; i++)
+            {
+                System.out.println(values[i] + " = " + result[i]);
+            }
         }
 
 
