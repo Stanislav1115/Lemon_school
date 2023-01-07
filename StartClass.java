@@ -4,9 +4,11 @@ public class StartClass {
         public static void main(String[] args)
         {
             int numb = check_value();
-            int result = StartClass.faktorial(numb);
+            boolean result = StartClass.isEven(numb);
             System.out.println("result: " + result);
         }
+
+
 
     public static int check_value(){
         Scanner input = new Scanner(System.in);
@@ -25,13 +27,8 @@ public class StartClass {
         }
         return range;
     }
-        public static Integer faktorial(int numb)
+        public static Boolean isEven(int numb)
         {
-              int result = 1;
-              for(int i = numb; i > 0; i--)
-              {
-                      result *= i;
-              }
-              return result;
+            return (numb%2)==0? true: false;
         }
 }
