@@ -1,81 +1,98 @@
 import java.util.Scanner;
-import java.util.*;
 
 public class StartClass {
     public static void main(String[] args)
     {
-        System.out.println("How many words you want to check? ");
-        int numb = checkValue();
-        if(numb < 0){
-            numb *= -1;
-        }else if(numb == 0){
-            System.out.println("Goodbye!");
-            System.exit(0);
-        }
-        String[] words = new String[numb];
-        for(int i = 0; i < words.length; i++)
+        Boolean k = true;
+        while(k)
         {
-            System.out.printf("Enter %dth number: ", i+1);
-            Scanner input = new Scanner(System.in);
-            words[i] = input.nextLine();
+            System.out.println("_________________________________________________");
+            System.out.println("1 - numbers ");
+            System.out.println("2 - days ");
+            System.out.println("Another input - exit ");
+            System.out.println("What task you want to check?: ");
+            System.out.println("");
+            System.out.println("");
+            int num = checkValue();
+            switch(num)
+            {
+                case 1: whatNumber();
+                    break;
+                case 2: whatDay();
+                    break;
+                default: System.exit(0);
+            }
         }
-        numberOfIdenticalWords(createMap(words));
-        getFirst(words);
-        getLast(words);
+    }
+    public static void whatNumber()
+    {
+        System.out.println("_________________________________________________");
+        System.out.println("Start number program..");
+        System.out.println("");
+        int number = checkValue();
+        if(0 <= number && number < 10)
+        {
+            System.out.println("One digit in number");
+        }else if(10 <= number && number < 100)
+        {
+            System.out.println("Two digits in number");
+        }
+        else if(100 <= number && number < 1000)
+        {
+            System.out.println("Three digits in number");
+        }
+        else if(1000 <= number && number < 10000)
+        {
+            System.out.println("Four digits in number");
+        }
+        else if(10000 <= number && number < 100000)
+        {
+            System.out.println("Five digits in number");
+        }
+        else
+        {
+            System.out.println("Not available type");
+        }
     }
 
-    public static Map<String, Integer> createMap(String[] words)
+    public static void whatDay()
     {
-        Map<String, Integer> data = new HashMap<String, Integer>();
-        for(int i = 0; i < words.length; i++)
+        System.out.println("_________________________________________________");
+        System.out.println("Start day program..");
+        System.out.println("");
+        int counter = 1;
+        while (counter<3)
         {
-            if(!(data.containsKey(words[i]))){
-                data.put(words[i], 0);
-                for(int j = i+1; j < words.length; j++)
-                {
-                    if(words[j].equals(words[i]))
-                    {
-                        data.put(words[i], data.get(words[i]) + 1);
-                    }
-                }
+            int num = checkValue();
+            counter++;
+            switch(num)
+            {
+                case 1:
+                    System.out.println("Sunday");
+                    break;
+                case 2:
+                    System.out.println("Monday");
+                    break;
+                case 3:
+                    System.out.println("Tuesday");
+                    break;
+                case 4:
+                    System.out.println("Wednesday");
+                    break;
+                case 5:
+                    System.out.println("Thursday");
+                    break;
+                case 6:
+                    System.out.println("Friday");
+                    break;
+                case 7:
+                    System.out.println("Saturday");
+                    break;
+                default: System.out.println("incorrect input");
             }
         }
-        return data;
-    }
-    public static void numberOfIdenticalWords(Map<String, Integer> data)
-    {
-        int result = 0;
-        for(Map.Entry<String, Integer> item : data.entrySet()){
-            result += item.getValue();
-        }
-        System.out.println("Number of identical words: " + result);
-        theLargestNumberOfIdenticalWords(data);
     }
 
-    public static void theLargestNumberOfIdenticalWords(Map<String, Integer> data)
-    {
-        int result = 0;
-        for(Map.Entry<String, Integer> item : data.entrySet()){
-            if(item.getValue() > result)
-            {
-                result = item.getValue();
-            }
-        }
-        for(Map.Entry<String, Integer> item : data.entrySet()){
-            if(item.getValue() == result)
-            {
-                System.out.println("The Largest: " + item.getKey());
-            }
-        }
-    }
-    public static void getFirst(String[] words)
-    {
-        System.out.println("First word: " + words[0]);
-    }
-    public static void getLast(String[] words)
-    {
-        System.out.println("Last word: " + words[words.length - 1]);
-    }
     public static int checkValue(){
         Scanner input = new Scanner(System.in);
         System.out.print("Enter an integer: ");
