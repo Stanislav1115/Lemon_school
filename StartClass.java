@@ -15,6 +15,7 @@ public class StartClass {
         String[] words = new String[numb];
         for(int i = 0; i < words.length; i++)
         {
+            System.out.printf("Enter %dth number: ", i+1);
             Scanner input = new Scanner(System.in);
             words[i] = input.nextLine();
         }
@@ -69,11 +70,11 @@ public class StartClass {
     }
     public static void getFirst(String[] words)
     {
-        System.out.println(words[0]);
+        System.out.println("First word: " + words[0]);
     }
     public static void getLast(String[] words)
     {
-        System.out.println(words[words.length - 1]);
+        System.out.println("Last word: " + words[words.length - 1]);
     }
     public static int checkValue(){
         Scanner input = new Scanner(System.in);
