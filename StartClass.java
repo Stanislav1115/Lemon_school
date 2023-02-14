@@ -8,12 +8,10 @@ public class StartClass {
         while(k)
         {
             System.out.println("!!!--------------------Start MENU--------------------!!!");
-            System.out.println("1 - The natural number n is given. Derive all numbers from 1 to n (Cycles) ");
-            System.out.println("2 - A given numerical array. Calculate the sum of all its elements. ");
-            System.out.println("3 - Recursive multiplication. ");
-            System.out.println("4 - Christmas tree made of stars ,, Recursive method of exponentiation");
-            System.out.println("5 - Recursive method of exponentiation");
-            System.out.println("6 - Akkerman function");
+            System.out.println("1 - Task number 1 ");
+            System.out.println("2 - Task number 2 ");
+            System.out.println("3 - Task number 3 ");
+            System.out.println("4 - Task number 4");
             System.out.println("Another input - exit ");
             System.out.println("_________________________________________________");
             System.out.println("What task you want to check?: ");
@@ -21,272 +19,251 @@ public class StartClass {
             System.out.println("");
             int num = checkValue();
             switch (num) {
-                case 1 : allNumbers1ToN();
-                break;
-                case 2 : arraySum();
+                case 1 : System.out.println(TaskNumber1());
                     break;
-                case 3 : recursiveMultiplication();
+                case 2 : System.out.println(TaskNumber2());;
                     break;
-                case 4 : treeOfStars();
+                case 3 : System.out.println(TaskNumber3());
                     break;
-                case 5 : rmoeStart();
-                    break;
-                case 6 : System.out.println("Enter \"m\" (Akkerman function)");
-                    int m = checkValue();
-                    System.out.println("Enter \"n\" (Akkerman function)");
-                    int n = checkValue();
-                    long res = ackermann(m, n);
-                    System.out.println(res);
+                case 4 : System.out.println(TaskNumber4());
                     break;
                 default : System.exit(0);
             }
         }
     }
     //===============================================================================
-    public static void allNumbers1ToN()
+    public static Boolean TaskNumber1()
     {
-        boolean k = true;
+        System.out.println("Input a substring");
+        String subStr = enterString();
+        char[] subStrCh = subStr.toCharArray();
+        System.out.println("Input a string: ");
+        String str = enterString();
+        str = str.substring((str.length() - 1) - (subStr.length() - 1));
+        char[] strCh = str.toCharArray();
+        Boolean k = true;
         while (k)
         {
-            System.out.print("Enter the value \"n\": ");
-            int n = checkValue();
             System.out.println("1  - Cycles");
-            System.out.println("2  - Recursion");
+            System.out.println("2  - Standart");
             System.out.print("Which method do you want to use?: ");
             int value = checkValue();
-
             switch (value)
             {
-                case 1: allNumbers1ToNCycle(n);
-                    k = false;
-                    break;
-                case 2: allNumbers1ToNRecursion(n);
-                    k = false;
-                    break;
+                case 1: return strCycle(str, subStr);
+                case 2: return strStandart(str, subStr);
+                default: System.exit(0);
             }
         }
+        return null;
     }
-    public static void allNumbers1ToNCycle(int n)
+    public static Boolean strCycle(String str, String subStr)
     {
-        System.out.println("Enter the last number: ");
-        int num = checkValue();
-        if(num > 1)
+        char[] subStrCh = subStr.toCharArray();
+        char[] strCh = str.toCharArray();
+
+        for(int i = 0; i < strCh.length; i++)
         {
-            for (int i = 1; i <= num; i++) {
-                System.out.println(i);
+            if(strCh[i] != subStrCh[i])
+            {
+                return false;
+            }
+            if(i == (strCh.length - 1))
+            {
+                if(strCh[i] == subStrCh[i])
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
-        else System.out.println("Last number can't be less that one");
+        return null;
+    }
+    public static Boolean strStandart(String str, String subStr)
+    {
+        return str.equals(subStr);
     }
 
-    public static int allNumbers1ToNRecursion(int n)
-    {
-        if(n <= 1)
-        {
-            System.out.println(n);
-            return 0;
-        }
-        else{
-            System.out.println(allNumbers1ToNRecursion(n - 1));
-        }
-        return 0;
-    }
     // =================================================================================
-    public static void arraySum()
+    public static Boolean TaskNumber2()
     {
-        System.out.println("How many elements will be in the array: ");
-        int numb = checkValue();
-        int[] array = new int[numb];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = checkValue();
-        }
-        String arrayString = Arrays.toString(array);
-        System.out.println(arrayString);
-        boolean k = true;
+        System.out.println("Input a substring");
+        String subStr = enterString();
+        char[] subStrCh = subStr.toCharArray();
+        System.out.println("Input a string: ");
+        String str = enterString();
+        //str = str.substring((str.length() - 1) - (subStr.length() - 1));
+        char[] strCh = str.toCharArray();
+        Boolean k = true;
         while (k)
         {
             System.out.println("1  - Cycles");
-            System.out.println("2  - Recursion");
+            System.out.println("2  - Standart");
             System.out.print("Which method do you want to use?: ");
             int value = checkValue();
-            int len = array.length-1;
-            int sum = 0;
-
             switch (value)
             {
-                case 1: arraySumCycle(array);
-                    k = false;
-                    break;
-                case 2: arraySumRecursion(array, len, sum);
-                    k = false;
-                    break;
+                case 1: return strCycle2(str, subStr);
+                case 2: return strStandart2(str, subStr);
+                default: System.exit(0);
             }
         }
+        return null;
     }
-    public static void arraySumCycle(int[] array)
+    public static Boolean strCycle2(String str, String subStr)
     {
-        int result = 0;
-        for(int i = 0; i < array.length; i++)
+        char[] subStrCh = subStr.toCharArray();
+        char[] strCh = str.toCharArray();
+
+        for(int i = 0; i < strCh.length; i++)
         {
-            result += array[i];
+            if(i == (strCh.length - subStrCh.length - 1) && strCh[i] != subStrCh[0])
+            {
+                return false;
+            }
+            else if (strCh[i] == subStrCh[0]) {
+                for(int j = 0; j < subStrCh.length; j++)
+                {
+                    if(strCh[i+j] != subStrCh[j])
+                    {
+                        break;
+                    }
+                    if(j == (subStrCh.length-1) && strCh[i+j] == subStrCh[j])
+                    {
+                        return true;
+                    }
+                }
+
+            }
         }
-        System.out.println("Result = " + result);
+        return null;
     }
-    public static void arraySumRecursion(int[] array, int len, int sum)
+    public static Boolean strStandart2(String str, String subStr)
     {
-        if (len < 0)
+        if (str.contains(subStr))
         {
-            System.out.println(sum);;
+            return true;
         }
         else
         {
-            sum += array.length;
-            arraySumRecursion(array, len-1, sum);
+            return false;
         }
     }
     // =================================================================================
-    public static void recursiveMultiplication()
+    public static Boolean TaskNumber3()
     {
-        boolean k = true;
+        System.out.println("Input a substring");
+        String subStr = enterString();
+        subStr = subStr.toLowerCase();
+        System.out.println("Input a string: ");
+        String str = enterString();
+        str = str.toLowerCase();
+        Boolean k = true;
         while (k)
         {
-            System.out.println("Enter the value \"n\": ");
-            int n = checkValue();
-            System.out.println("Enter the value \"m\": ");
-            int m = checkValue();
             System.out.println("1  - Cycles");
-            System.out.println("2  - Recursion");
+            System.out.println("2  - Standart");
             System.out.print("Which method do you want to use?: ");
             int value = checkValue();
-            int sum = 0;
-
             switch (value)
             {
-                case 1: recursiveMultiplicationCycle(n, m);
-                    k = false;
-                    break;
-                case 2: recursiveMultiplicationRecursion(n, m, sum);
-                    k = false;
-                    break;
+                case 1: return strCycle3(str, subStr);
+                case 2: return strStandart3(str, subStr);
+                default: System.exit(0);
             }
         }
+        return null;
     }
-    public static void recursiveMultiplicationCycle(int n, int m)
+    public static Boolean strCycle3(String str, String subStr)
     {
-        int sum = 0;
-        for(int i = 0; i < m; i++)
-        {
-            sum += n;
-        }
-        System.out.println(sum);
-    }
-    public static void recursiveMultiplicationRecursion(int n, int m, int sum)
-    {
-        if(m < 1)
-        {
-            System.out.println(sum);
-        }
-        else{
-            sum += n;
-            recursiveMultiplicationRecursion(n, m-1, sum);
-        }
-    }
-    // =================================================================================
-    public static void treeOfStars()
-    {
-        boolean k = true;
-        while (k)
-        {
-            System.out.println("Enter the value \"*\": ");
-            int n = checkValue();
-            System.out.println("1  - Cycles");
-            System.out.println("2  - Recursion");
-            System.out.print("Which method do you want to use?: ");
-            int value = checkValue();
-            int sum = 0;
+        char[] subStrCh = subStr.toCharArray();
+        char[] strCh = str.toCharArray();
 
-            switch (value)
+        for(int i = 0; i < strCh.length; i++)
+        {
+            if(i == strCh.length-1 && strCh[i] == subStrCh[i])
             {
-                case 1: treeOfStarsCycle(n);
-                    k = false;
-                    break;
-                case 2: int i = 1;
-                    String star = "*";
-                    treeOfStarsRecursion(i, n, star);
-                    k = false;
-                    break;
+                return true;
+            }
+            if(strCh[i] != subStrCh[i])
+            {
+                return false;
             }
         }
+        return null;
     }
-    public static void treeOfStarsCycle(int n)
+    public static Boolean strStandart3(String str, String subStr)
     {
-        for(int i = 1; i <= n; i++)
+        if (str.contains(subStr))
         {
-            for(int j = 1; j <= i; j++)
-            {
-                System.out.print("*");
-            }
-            System.out.println("");
-        }
-    }
-    public static void treeOfStarsRecursion(int i, int n, String star)
-    {
-        if(n == i)
-        {
-            System.out.print(star);
-            System.out.println("");
-        }
-        else {
-                System.out.print(star);
-            System.out.println("");
-            treeOfStarsRecursion(i+1, n, star + "*");
-        }
-    }
-    // =================================================================================
-    public static void rmoeStart()
-    {
-        System.out.println("Enter start value: ");
-        int n = checkValue();
-        System.out.println("Enter degree: ");
-        int m = checkValue();
-        int result = n;
-        rmoe(n,m, result);
-    }
-    public static void rmoe(int n, int m, int result)
-    {
-        if(m == 0)
-        {
-            System.out.println(1);
-        }else if(m == 1)
-        {
-            System.out.println(result);
+            return true;
         }
         else
         {
-            result *= n;
-            rmoe(n, m-1, result);
+            return false;
         }
     }
     // =================================================================================
-    public static int ackermann(int m, int n)
+    public static Boolean TaskNumber4()
     {
-        if(m == 0)
+        System.out.println("Input a string: ");
+        String str = enterString();
+        System.out.println("Input a substring");
+        String subStr = enterString();
+        str = str.substring(0, (subStr.length() - 1));
+        char[] subStrCh = subStr.toCharArray();
+        char[] strCh = str.toCharArray();
+        Boolean k = true;
+        while (k)
         {
-            return n + 1;
+            System.out.println("1  - Cycles");
+            System.out.println("2  - Standart");
+            System.out.print("Which method do you want to use?: ");
+            int value = checkValue();
+            switch (value)
+            {
+                case 1: return strCycle4(str, subStr);
+                case 2: return strStandart4(str, subStr);
+                default: System.exit(0);
+            }
         }
-        else if (n == 0)
+        return null;
+    }
+    public static Boolean strCycle4(String str, String subStr)
+    {
+        char[] subStrCh = subStr.toCharArray();
+        char[] strCh = str.toCharArray();
+
+        for(int i = 0; i < strCh.length ; i++)
         {
-            return ackermann(m - 1, 1);
+            if(strCh[i] != subStrCh[i])
+            {
+                return false;
+            }
+            if(i == (strCh.length - 1))
+            {
+                if(strCh[i] == subStrCh[i])
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
-        else
-        {
-            return ackermann(m - 1, ackermann(m,n-1));
-        }
+        return null;
+    }
+    public static Boolean strStandart4(String str, String subStr)
+    {
+        return str.equals(subStr);
     }
 
     public static int checkValue(){
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
         int range;
         while(true){
             if(input.hasNextInt()){
@@ -300,5 +277,11 @@ public class StartClass {
             System.out.println("Enter an integer: ");
         }
         return range;
+    }
+
+    public static String enterString(){
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        return str;
     }
 }
